@@ -3,36 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Давай познакомимся</title>
+  <title>Welcome</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       height: 100vh;
-      background: url('https://i.pinimg.com/originals/ba/48/b5/ba48b59ebadf8f0ff6c9c59d210c4ae4.jpg') no-repeat center center fixed;
       background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       color: white;
       text-align: center;
-      padding: 20px;
+      position: relative;
+      overflow: hidden;
     }
 
     .overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
       background: rgba(0, 0, 0, 0.6);
-      border-radius: 20px;
       padding: 30px 20px;
-      animation: fadeIn 1s ease-in-out;
+      border-radius: 20px;
       max-width: 90%;
+      animation: fadeIn 1s ease-in-out;
     }
 
     h1 {
       font-size: 2rem;
       margin-bottom: 30px;
-      animation: slideDown 0.6s ease-out;
     }
 
     .buttons {
@@ -60,15 +69,11 @@
       from { opacity: 0; }
       to { opacity: 1; }
     }
-
-    @keyframes slideDown {
-      from { transform: translateY(-20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
   </style>
 </head>
 <body>
-  <div class="overlay">
+  <div class="overlay"></div>
+  <div class="content">
     <h1 id="question">Тебе уже есть 18?</h1>
     <div class="buttons">
       <button id="yesBtn">Да</button>
@@ -77,8 +82,18 @@
   </div>
 
   <script>
-    const redirectUrl = "https://yourdomain.com/offer"; // Замените на свою ссылку
+    const backgrounds = [
+      "https://images.unsplash.com/photo-1594824476967-48c8b9642738?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1538211072144-7f74e1bb1d00?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&w=800&q=80"
+    ];
 
+    // Случайный фон
+    document.body.style.backgroundImage = `url('${backgrounds[Math.floor(Math.random() * backgrounds.length)]}')`;
+
+    // Определение языка
     const lang = navigator.language.startsWith('ru') ? 'ru' : 'en';
     const texts = {
       ru: {
@@ -97,7 +112,9 @@
     document.getElementById('yesBtn').textContent = texts[lang].yes;
     document.getElementById('noBtn').textContent = texts[lang].no;
 
-    // Открытие во внешнем браузере
+    const redirectUrl = "https://yourdomain.com/offer"; // Замените на свою ссылку
+
+    // Переход
     document.getElementById('yesBtn').addEventListener('click', () => {
       const a = document.createElement('a');
       a.href = redirectUrl;
@@ -105,9 +122,7 @@
       a.rel = "noopener noreferrer";
       document.body.appendChild(a);
       a.click();
-      setTimeout(() => {
-        window.open(redirectUrl, "_blank");
-      }, 500);
+      setTimeout(() => window.open(redirectUrl, "_blank"), 500);
     });
 
     document.getElementById('noBtn').addEventListener('click', () => {
