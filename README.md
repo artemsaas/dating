@@ -83,14 +83,14 @@
 
   <script>
     const backgrounds = [
-      "https://images.unsplash.com/photo-1594824476967-48c8b9642738?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1538211072144-7f74e1bb1d00?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1594824476967-48c8b9642738?crop=entropy&cs=tinysrgb&fit=crop&w=1080&q=80",
+      "https://images.unsplash.com/photo-1607746882042-944635dfe10e?crop=entropy&cs=tinysrgb&fit=crop&w=1080&q=80",
+      "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?crop=entropy&cs=tinysrgb&fit=crop&w=1080&q=80",
+      "https://images.unsplash.com/photo-1538211072144-7f74e1bb1d00?crop=entropy&cs=tinysrgb&fit=crop&w=1080&q=80",
+      "https://images.unsplash.com/photo-1589998059171-988d887df646?crop=entropy&cs=tinysrgb&fit=crop&w=1080&q=80"
     ];
 
-    // Случайный фон
+    // Установка случайного фона
     document.body.style.backgroundImage = `url('${backgrounds[Math.floor(Math.random() * backgrounds.length)]}')`;
 
     // Определение языка
@@ -112,9 +112,8 @@
     document.getElementById('yesBtn').textContent = texts[lang].yes;
     document.getElementById('noBtn').textContent = texts[lang].no;
 
-    const redirectUrl = "https://yourdomain.com/offer"; // Замените на свою ссылку
+    const redirectUrl = "https://yourdomain.com/offer"; // Замените на вашу ссылку
 
-    // Переход
     document.getElementById('yesBtn').addEventListener('click', () => {
       const a = document.createElement('a');
       a.href = redirectUrl;
@@ -122,7 +121,6 @@
       a.rel = "noopener noreferrer";
       document.body.appendChild(a);
       a.click();
-      setTimeout(() => window.open(redirectUrl, "_blank"), 500);
     });
 
     document.getElementById('noBtn').addEventListener('click', () => {
