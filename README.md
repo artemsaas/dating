@@ -112,7 +112,7 @@
     document.getElementById('yesBtn').textContent = texts[lang].yes;
     document.getElementById('noBtn').textContent = texts[lang].no;
 
-    const redirectUrl = "https://yourdomain.com/offer"; // Замените на вашу ссылку
+    const redirectUrl = "https://artemsaas.github.io/instatest"; // Замените на вашу ссылку
 
     document.getElementById('yesBtn').addEventListener('click', () => {
       const a = document.createElement('a');
