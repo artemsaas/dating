@@ -83,11 +83,11 @@
 
   <script>
     const backgrounds = [
-      "https://images.unsplash.com/photo-1594824476967-48c8b9642738?crop=entropy&cs=tinysrgb&fit=crop&w=1080&q=80",
-      "https://images.unsplash.com/photo-1607746882042-944635dfe10e?crop=entropy&cs=tinysrgb&fit=crop&w=1080&q=80",
-      "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?crop=entropy&cs=tinysrgb&fit=crop&w=1080&q=80",
-      "https://images.unsplash.com/photo-1538211072144-7f74e1bb1d00?crop=entropy&cs=tinysrgb&fit=crop&w=1080&q=80",
-      "https://images.unsplash.com/photo-1589998059171-988d887df646?crop=entropy&cs=tinysrgb&fit=crop&w=1080&q=80"
+      "https://imgur.com/a/2hNXF86",
+      "https://ibb.co/C3Z2v1kh",
+      "https://ibb.co/XZZkC09K",
+      "https://ibb.co/hFykSd6H",
+      "https://ibb.co/hJJDXzFr"
     ];
 
     // Установка случайного фона
