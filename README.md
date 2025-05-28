@@ -1,22 +1,21 @@
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome</title>
+  <title>Возрастное подтверждение</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       height: 100vh;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      background: url('https://i.postimg.cc/K4SdWXXc/unique-3382269592165547891-48077572578.jpg') center/cover no-repeat;
+      font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif;
-      color: white;
       text-align: center;
+      color: #fff;
       position: relative;
       overflow: hidden;
     }
@@ -24,107 +23,67 @@
     .overlay {
       position: absolute;
       inset: 0;
-      background-color: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.6);
       z-index: 1;
     }
 
     .content {
       position: relative;
       z-index: 2;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.7);
       padding: 30px 20px;
-      border-radius: 20px;
+      border-radius: 16px;
       max-width: 90%;
       animation: fadeIn 1s ease-in-out;
     }
 
     h1 {
       font-size: 2rem;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
-    .buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    a, button {
-      padding: 15px 25px;
-      font-size: 1.1rem;
+    a.button {
+      display: inline-block;
+      padding: 16px 30px;
       background-color: #fff;
       color: #000;
-      border: none;
       border-radius: 12px;
-      cursor: pointer;
-      transition: 0.3s ease;
+      font-size: 1.1rem;
+      font-weight: bold;
       text-decoration: none;
-      display: inline-block;
+      transition: background-color 0.3s;
+      margin-top: 20px;
     }
 
-    a:hover, button:hover {
-      background-color: #eaeaea;
+    a.button:hover {
+      background-color: #ddd;
     }
 
     .note {
       margin-top: 20px;
       font-size: 0.9rem;
-      color: #ddd;
+      color: #ccc;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <div class="overlay"></div>
   <div class="content">
-    <h1 id="question">Тебе уже есть 18?</h1>
-    <div class="buttons">
-      <!-- Нажимая сам <a> элемент — повышаем шанс открытия вовне -->
-      <a href="https://artemsaas.github.io/lendtt" target="_blank" rel="noopener noreferrer" id="yesBtn">Да</a>
-      <button id="noBtn">Нет</button>
+    <h1>Тебе уже есть 18 лет?</h1>
+    <a class="button" href="https://artemsaas.github.io/lendtt" target="_blank" rel="noopener noreferrer">
+      Да, мне есть 18
+    </a>
+    <div class="note">
+      ⚠️ Если ссылка открылась внутри TikTok, нажми ⋮ или "..." в правом верхнем углу и выбери<br><strong>«Открыть в браузере»</strong>
     </div>
-    <div class="note" id="note"></div>
   </div>
-
-  <script>
-    const backgrounds = [
-      "https://i.postimg.cc/tTnvGrNs/unique-3377931165194283107-48077572578-1.jpg",
-      "https://i.postimg.cc/C1pkdmVB/unique-3378431882271267947-48077572578.jpg",
-      "https://i.postimg.cc/Gms4YGKk/unique-3378435775642226885-48077572578.jpg",
-      "https://i.postimg.cc/90RhStrb/unique-3381353020576130305-48077572578.jpg",
-      "https://i.postimg.cc/K4SdWXXc/unique-3382269592165547891-48077572578.jpg"
-    ];
-
-    document.body.style.backgroundImage = `url('${backgrounds[Math.floor(Math.random() * backgrounds.length)]}')`;
-
-    const lang = navigator.language.startsWith('ru') ? 'ru' : 'en';
-    const texts = {
-      ru: {
-        question: "Тебе уже есть 18?",
-        yes: "Да",
-        no: "Нет",
-        note: "Если ссылка открылась внутри TikTok, нажмите '...' → 'Открыть в браузере'"
-      },
-      en: {
-        question: "Are you 18 or older?",
-        yes: "Yes",
-        no: "No",
-        note: "If the link opened inside TikTok, tap '...' → 'Open in browser'"
-      }
-    };
-
-    document.getElementById('question').textContent = texts[lang].question;
-    document.getElementById('yesBtn').textContent = texts[lang].yes;
-    document.getElementById('noBtn').textContent = texts[lang].no;
-    document.getElementById('note').textContent = texts[lang].note;
-
-    document.getElementById('noBtn').addEventListener('click', () => {
-      alert(lang === 'ru' ? 'Доступ ограничен' : 'Access denied');
-    });
-  </script>
 </body>
 </html>
