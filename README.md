@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -42,20 +42,20 @@
       margin-bottom: 20px;
     }
 
-    a.button {
-      display: inline-block;
+    button {
       padding: 16px 30px;
       background-color: #fff;
       color: #000;
+      border: none;
       border-radius: 12px;
       font-size: 1.1rem;
       font-weight: bold;
-      text-decoration: none;
+      cursor: pointer;
       transition: background-color 0.3s;
       margin-top: 20px;
     }
 
-    a.button:hover {
+    button:hover {
       background-color: #ddd;
     }
 
@@ -78,12 +78,29 @@
   <div class="overlay"></div>
   <div class="content">
     <h1>Тебе уже есть 18 лет?</h1>
-    <a class="button" href="https://artemsaas.github.io/lendtt" target="_blank" rel="noopener noreferrer">
-      Да, мне есть 18
-    </a>
+    <button onclick="openExternal()">Да, мне есть 18</button>
     <div class="note">
-      ⚠️ Если ссылка открылась внутри TikTok, нажми ⋮ или "..." в правом верхнем углу и выбери<br><strong>«Открыть в браузере»</strong>
+      ⚠️ Если ничего не происходит, нажми ⋮ или "..." в правом верхнем углу TikTok и выбери<br><strong>«Открыть в браузере»</strong>
     </div>
   </div>
+
+  <script>
+    const externalUrl = "https://artemsaas.github.io/lendtt";
+
+    function openExternal() {
+      const ua = navigator.userAgent;
+      const isAndroid = /Android/i.test(ua);
+      const isIOS = /iPhone|iPad|iPod/i.test(ua);
+
+      if (isAndroid) {
+        const formattedUrl = externalUrl.replace(/^https?:\/\//, '');
+        window.location.href = `intent://${formattedUrl}#Intent;scheme=https;package=com.android.chrome;end`;
+      } else if (isIOS) {
+        window.location.href = externalUrl;
+      } else {
+        window.open(externalUrl, "_blank");
+      }
+    }
+  </script>
 </body>
 </html>
