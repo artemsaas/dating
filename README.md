@@ -1,42 +1,51 @@
 
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Start Chatting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Давай познакомимся</title>
   <style>
     body {
       margin: 0;
-      background: linear-gradient(135deg, #ff416c, #ff4b2b);
-      color: #fff;
-      font-family: 'Arial', sans-serif;
+      padding: 0;
+      height: 100vh;
+      background: url('https://i.pinimg.com/originals/ba/48/b5/ba48b59ebadf8f0ff6c9c59d210c4ae4.jpg') no-repeat center center fixed;
+      background-size: cover;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      height: 100vh;
+      font-family: 'Arial', sans-serif;
+      color: white;
       text-align: center;
       padding: 20px;
-      animation: fadeIn 1s ease-in;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      padding: 30px 20px;
+      animation: fadeIn 1s ease-in-out;
+      max-width: 90%;
     }
 
     h1 {
-      font-size: 2.2rem;
-      margin-bottom: 40px;
+      font-size: 2rem;
+      margin-bottom: 30px;
       animation: slideDown 0.6s ease-out;
     }
 
     .buttons {
       display: flex;
-      gap: 20px;
-      animation: fadeIn 1.2s ease-in;
+      flex-direction: column;
+      gap: 15px;
     }
 
     button {
-      background: #fff;
+      padding: 15px 25px;
+      font-size: 1.1rem;
+      background-color: #fff;
       color: #000;
-      font-size: 1.2rem;
-      padding: 15px 35px;
       border: none;
       border-radius: 12px;
       cursor: pointer;
@@ -44,11 +53,11 @@
     }
 
     button:hover {
-      background: #eee;
+      background-color: #eaeaea;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; } 
+      from { opacity: 0; }
       to { opacity: 1; }
     }
 
@@ -59,19 +68,21 @@
   </style>
 </head>
 <body>
-  <h1 id="question">Are you 18 or older?</h1>
-  <div class="buttons">
-    <button id="yesBtn">Yes</button>
-    <button id="noBtn">No</button>
+  <div class="overlay">
+    <h1 id="question">Тебе уже есть 18?</h1>
+    <div class="buttons">
+      <button id="yesBtn">Да</button>
+      <button id="noBtn">Нет</button>
+    </div>
   </div>
 
   <script>
-    const redirectUrl = "https://yourdomain.com/offer"; // замените на свою ссылку
+    const redirectUrl = "https://yourdomain.com/offer"; // Замените на свою ссылку
 
     const lang = navigator.language.startsWith('ru') ? 'ru' : 'en';
     const texts = {
       ru: {
-        question: "Тебе уже исполнилось 18?",
+        question: "Тебе уже есть 18?",
         yes: "Да",
         no: "Нет"
       },
@@ -86,6 +97,7 @@
     document.getElementById('yesBtn').textContent = texts[lang].yes;
     document.getElementById('noBtn').textContent = texts[lang].no;
 
+    // Открытие во внешнем браузере
     document.getElementById('yesBtn').addEventListener('click', () => {
       const a = document.createElement('a');
       a.href = redirectUrl;
@@ -99,7 +111,7 @@
     });
 
     document.getElementById('noBtn').addEventListener('click', () => {
-      alert(lang === 'ru' ? 'Доступ запрещён' : 'Access denied');
+      alert(lang === 'ru' ? 'Доступ ограничен' : 'Access denied');
     });
   </script>
 </body>
