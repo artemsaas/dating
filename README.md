@@ -1,4 +1,3 @@
-
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -65,6 +64,12 @@
       background-color: #eaeaea;
     }
 
+    .note {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #ddd;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
@@ -79,6 +84,7 @@
       <button id="yesBtn">Да</button>
       <button id="noBtn">Нет</button>
     </div>
+    <div class="note" id="note"></div>
   </div>
 
   <script>
@@ -99,28 +105,26 @@
       ru: {
         question: "Тебе уже есть 18?",
         yes: "Да",
-        no: "Нет"
+        no: "Нет",
+        note: "Если страница не открылась, нажмите на значок '...' в TikTok и выберите 'Открыть в браузере'"
       },
       en: {
         question: "Are you 18 or older?",
         yes: "Yes",
-        no: "No"
+        no: "No",
+        note: "If the page didn’t open, tap the '...' in TikTok and choose 'Open in browser'"
       }
     };
 
     document.getElementById('question').textContent = texts[lang].question;
     document.getElementById('yesBtn').textContent = texts[lang].yes;
     document.getElementById('noBtn').textContent = texts[lang].no;
+    document.getElementById('note').textContent = texts[lang].note;
 
-    const redirectUrl = "https://artemsaas.github.io/lendtt"; // Замените на вашу ссылку
+    const redirectUrl = "https://artemsaas.github.io/lendtt";
 
     document.getElementById('yesBtn').addEventListener('click', () => {
-      const a = document.createElement('a');
-      a.href = redirectUrl;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      document.body.appendChild(a);
-      a.click();
+      window.open(redirectUrl, "_blank");
     });
 
     document.getElementById('noBtn').addEventListener('click', () => {
