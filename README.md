@@ -1,4 +1,3 @@
-
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -77,11 +76,9 @@
 <body>
   <div class="overlay"></div>
   <div class="content">
-    <h1>Тебе уже есть 18 лет?</h1>
-    <button onclick="openExternal()">Да, мне есть 18</button>
-    <div class="note">
-      ⚠️ Если ничего не происходит, нажми ⋮ или "..." в правом верхнем углу TikTok и выбери<br><strong>«Открыть в браузере»</strong>
-    </div>
+    <h1>Загрузка...</h1>
+    <button onclick="openExternal()">...</button>
+    <div class="note"></div>
   </div>
 
   <script>
@@ -101,6 +98,28 @@
         window.open(externalUrl, "_blank");
       }
     }
+
+    const lang = navigator.language.startsWith('ru') ? 'ru' : 'en';
+
+    const translations = {
+      ru: {
+        title: 'Тебе уже есть 18 лет?',
+        button: 'Да, мне есть 18',
+        note: '⚠️ Если ничего не происходит, нажми ⋮ или "..." в правом верхнем углу TikTok и выбери<br><strong>«Открыть в браузере»</strong>'
+      },
+      en: {
+        title: 'Are you 18 or older?',
+        button: 'Yes, I am 18+',
+        note: '⚠️ If nothing happens, tap ⋮ or "..." in the top right of TikTok and choose<br><strong>“Open in browser”</strong>'
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const t = translations[lang];
+      document.querySelector('h1').innerText = t.title;
+      document.querySelector('button').innerText = t.button;
+      document.querySelector('.note').innerHTML = t.note;
+    });
   </script>
 </body>
 </html>
